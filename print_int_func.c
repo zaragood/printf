@@ -14,14 +14,13 @@ int print_int(va_list list)
 	if (number < 0)
 	{
 		putchar('-');
-		digits *= -1;
 		len++;
+		digits *= -1;
 	}
 	len += int_helper(digits);
 	return (len);
 }
-/**
- * int_helper - Helps to manipulate an unsigned integer value
+/** * int_helper - Helps to manipulate an unsigned integer value
  *
  * @value: The unsigned integer value to manipulate
  *
