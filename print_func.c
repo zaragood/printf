@@ -5,9 +5,9 @@
  * @lists: va_list containing the character to be printed
  * Return: number of character printed
  */
-int print_character(va_list lists)
+int print_char(va_list list)
 {
-	char ch = va_arg(lists, int);
+	char ch = va_arg(list, int);
 	putchar(ch);
 	return (1);
 }
@@ -17,18 +17,18 @@ int print_character(va_list lists)
  * @lists: va_list containing the string to be printed
  * Return: number of character printed
  */
-int print_string(va_list lists)
+int print_str(va_list list)
 {
-	char *string = va_arg(lists, char *);
+	char *str = va_arg(list, char *);
 	int i;
 
-	if (string == NULL)
+	if (str == NULL)
 	{
-		string = "(null)";
+		str = "(null)";
 	}
-	for (i = 0; string[i]; i++)
+	for (i = 0; str[i]; i++)
 	{
-		putchar(string[i]);
+		putchar(str[i]);
 	}
 	return (i);
 	
@@ -39,7 +39,7 @@ int print_string(va_list lists)
  * @lists: unused
  * Return: the number of characters printed
  */
-int print_percent(__attribute__((unused)) va_list lists)
+int print_mod(__attribute__((unused)) va_list list)
 {
 	putchar('%');
 	return (1);

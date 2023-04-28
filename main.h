@@ -15,16 +15,14 @@
  * that represents the format specifier, and @print is a function pointer that
  * points to the corresponding print function for the format specifier.
  */
-
-typedef struct check_format
+typedef struct print_format
 {
 	char specifier;
-	int (*print)(va_list lists);
+	int (*print)(va_list list);
 } prt;
 
+int print_char(va_list list);
+int print_str(va_list list);
+int print_mod(va_list list);
 int _printf(const char *format, ...);
-
-int print_character(va_list list);
-int print_string(va_list list);
-int print_percent(va_list list);
-#endif /*MAIN_H*/
+#endif /* MAIN.H */

@@ -20,62 +20,49 @@
 int _printf(const char *format, ...)
 {
 	/* Array of function pointers for each conversion specifier */
-	prt funcs[] = {
-		{'c', print_character},
-		{'s', print_string},
-		{'%', print_percent},
-		{'\0', NULL}
+
+	va_list list;
+	int len = 0, i = 0, j, array_len;
+	prt format_funcs[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'%', print_mod},
 	};
 
-	/*variadic list */
-	va_list lists;
+	/* check if format is valid*/
+	if (format == NULL)
+		return (-1);
 
-	/* pointer to type prt to store the address to the first element in the array */
-	prt *func = NULL;
-	int length = 0, i = 0;
-	va_start(lists, format);
-
-	/* loop through the format string until the end is reached */
-	while (format[i])
+	/* starts the printing process*/
+	va_start(list, format);
+	while (format[i] != '\0')
 	{
-		/* check if character in the format string == % */
 		if (format[i] != '%')
 		{
-			/* print the format string if not equal to  % */
 			putchar(format[i]);
-			length++;
+			len++;
 		}
 		else
 		{
 			i++;
-			/* Initialize the function pointer to the first element of the func array*/
-			func = funcs;
-
-			/* Loop through the function pointer array until a NULL specifier is reached */
-			while (func->specifier != '\0')
+			array_len = sizeof(format_funcs) / sizeof(format_funcs[0]);
+			for (j = 0; j < array_len; j++)
 			{
-				/* Check if the current format character matches the specifier
-   for the current function pointer. If they match, call the
-   print function to handle the conversion. */
-				if (format[i] == func->specifier)
+				if (format[i] == format_funcs[j].specifier)
 				{
-					length += func->print(lists);
+					len += format_funcs[j].print(list);
 					break;
 				}
-				func++;
 			}
-			if (format[i] != func->specifier)
+			if (format[i] != format_funcs[j].specifier)
 			{
 				i--;
 				putchar(format[i]);
-				length++;
+				len++;
 			}
-			
 		}
 		i++;
 	}
-	va_end(lists);
-
-	return (length);
-
+	va_end(list);
+	return (len);
 }
