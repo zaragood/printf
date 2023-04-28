@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_all - prints anything, with specific formats for different data types
+ * _printf - prints anything, with specific formats for different data types
  * @format: a string of format specifiers for the data to be printed
  * @...: variable number of arguments that correspond to the format specifiers
  * Return: the total number of characters printed
@@ -16,10 +16,8 @@ int _printf(const char *format, ...)
 		{'d', print_int},
 		{'i', print_int},
 	};
-	/* check if format is valid*/
 	if (!format || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	/* starts the printing process*/
 	va_start(list, format);
 	while (format[i] != '\0')
 	{
