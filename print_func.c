@@ -1,20 +1,21 @@
 #include "main.h"
 #include <stddef.h>
 /**
- * print_character - prints a single character
- * @lists: va_list containing the character to be printed
+ * print_char - prints a single character
+ * @list: va_list containing the character to be printed
  * Return: number of character printed
  */
 int print_char(va_list list)
 {
 	char ch = va_arg(list, int);
+
 	putchar(ch);
 	return (1);
 }
 
 /**
- * print_string - prints a null terminated string
- * @lists: va_list containing the string to be printed
+ * print_str - prints a null terminated string
+ * @list: va_list containing the string to be printed
  * Return: number of character printed
  */
 int print_str(va_list list)
@@ -31,12 +32,12 @@ int print_str(va_list list)
 		putchar(str[i]);
 	}
 	return (i);
-	
+
 }
 
 /**
- * print_percent - print a percent symbol
- * @lists: unused
+ * print_mod - print a percent symbol
+ * @list: unused
  * Return: the number of characters printed
  */
 int print_mod(__attribute__((unused)) va_list list)
