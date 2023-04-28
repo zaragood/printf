@@ -5,7 +5,8 @@
 #include <stdarg.h>
 
 /**
- * struct check_format - struct to map format specifiers to their print functions
+ * struct print_format - struct to map format specifiers
+ * to their print functions
  *
  * @specifier: the format specifier character
  * @print: function pointer to the print function for the specifier
@@ -25,4 +26,6 @@ int print_char(va_list list);
 int print_str(va_list list);
 int print_mod(va_list list);
 int _printf(const char *format, ...);
+int print_int(va_list list);
+int int_helper(unsigned int value);
 #endif /* MAIN.H */
