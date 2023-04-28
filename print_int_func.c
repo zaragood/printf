@@ -17,6 +17,11 @@ int print_int(va_list list)
 		digits *= -1;
 		len++;
 	}
+	else if (number == 0)
+	{
+		putchar('0');
+		return (1);
+	}
 	len += int_helper(digits);
 	return (len);
 }
