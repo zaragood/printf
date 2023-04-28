@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 		{'%', print_mod},
 	};
 	/* check if format is valid*/
-	if (format == NULL)
+	if (!format || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	/* starts the printing process*/
 	va_start(list, format);
