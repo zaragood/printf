@@ -16,6 +16,7 @@ int print_int(va_list list)
 		putchar('-');
 		len++;
 		digits *= -1;
+		len++;
 	}
 	len += int_helper(digits);
 	return (len);
