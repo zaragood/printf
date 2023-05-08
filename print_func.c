@@ -45,3 +45,40 @@ int print_mod(__attribute__((unused)) va_list list)
 	putchar('%');
 	return (1);
 }
+
+/**
+ * print_binary - Prints the binary representation of an unsigned int
+ * @list: A va_list containing the unsigned int to print
+ *
+ * Return: The number of characters printed
+ */
+int print_binary(va_list list)
+{
+	int number = va_arg(list, int);
+
+	if (number == 0)
+	{
+		putchar('0');
+		return (1);
+	}
+	else if (number > 0)
+		return (binary_helper(number));
+	return (0);
+}
+
+/**
+ * binary_helper - Converts an integer to binary representation
+ * @value: The integer to convert
+ *
+ * Return: A binary string representation of the input value
+ */
+int binary_helper(int value)
+{
+	int len = 0;
+
+	if (value == 0)
+		return (0);
+	len = (1 + binary_helper(value / 2));
+	putchar((value % 2) + '0');
+	return (len);
+}

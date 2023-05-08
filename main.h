@@ -28,4 +28,6 @@ int print_mod(va_list list);
 int _printf(const char *format, ...);
 int print_int(va_list list);
 int int_helper(unsigned int value);
+int print_binary(va_list list);
+int binary_helper(int value);
 #endif /* MAIN.H */
